@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Adarsh — Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#">Adarsh</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <nav class="site-nav">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="hero-inner">
+        <h1>Hi, I'm Adarsh</h1>
+        <p class="lead">A web developer building neat, responsive websites and apps.</p>
+        <p>
+          <a class="btn" href="#projects">See my work</a>
+          <a class="btn btn-alt" href="#contact">Contact me</a>
+        </p>
+      </div>
+    </section>
+
+    <section id="about" class="container about">
+      <h2>About me</h2>
+      <p>Brief intro — replace this with a short paragraph about you. Mention skills, interests, or the kinds of projects you like to build.</p>
+      <ul class="skills">
+        <li>HTML &amp; CSS</li>
+        <li>JavaScript</li>
+        <li>React / Frontend</li>
+        <li>Node / Backend</li>
+      </ul>
+    </section>
+
+    <section id="projects" class="container projects">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-thumb">IMG</div>
+          <h3>Project One</h3>
+          <p>Short description. Replace with your project details and links.</p>
+          <p><a class="link" href="#">View</a></p>
+        </article>
+
+        <article class="project-card">
+          <div class="project-thumb">IMG</div>
+          <h3>Project Two</h3>
+          <p>Short description.</p>
+          <p><a class="link" href="#">View</a></p>
+        </article>
+
+        <article class="project-card">
+          <div class="project-thumb">IMG</div>
+          <h3>Project Three</h3>
+          <p>Short description.</p>
+          <p><a class="link" href="#">View</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="container contact">
+      <h2>Contact</h2>
+      <p>If you'd like to work together, drop a message.</p>
+      <form class="contact-form" onsubmit="return false;">
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" placeholder="Your name">
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" placeholder="you@example.com">
+        </label>
+        <label>
+          <span>Message</span>
+          <textarea name="message" rows="5" placeholder="Say hi..."></textarea>
+        </label>
+        <button class="btn" type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Adarsh. Built with ❤️.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
