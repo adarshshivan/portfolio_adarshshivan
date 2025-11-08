@@ -15,6 +15,18 @@
   box-sizing: border-box;
 }
 
+  :root {
+    /* Light theme variables (greyish white background) */
+    --bg: #f4f6f8; /* page background */
+    --bg-secondary: #ffffff; /* card / surface */
+    --accent: #1e90ff;
+    --accent-light: #00a8ff;
+    --text: #0b1220; /* primary text (dark) */
+    --text-muted: #556170; /* subdued text */
+    --border: rgba(11, 17, 32, 0.06);
+    --radius: 12px;
+    --container: 1200px;
+  }
 html, body {
   height: 100%;
 }
@@ -24,6 +36,15 @@ body {
   font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   background: linear-gradient(135deg, var(--bg) 0%, #1a1f3a 100%);
   color: var(--text);
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-secondary) 100%);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+  }
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
@@ -35,21 +56,52 @@ body {
   padding: 0 2rem;
 }
 
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    /* light glass navbar */
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(6px) saturate(120%);
+    -webkit-backdrop-filter: blur(6px) saturate(120%);
+    border: 1px solid var(--border);
+    box-shadow: 0 6px 18px rgba(11,17,32,0.06);
+  }
 /* Header */
 .site-header {
-  backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(10, 14, 39, 0.7);
-  border-bottom: 1px solid var(--border);
+  /* glass effect for navbar */
+  background: rgba(255, 255, 255, 0.03);
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 6px 22px rgba(2,6,23,0.45);
 }
 
+  .site-nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.25s ease, background 0.25s ease;
+  }
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.2rem 0;
+  .site-nav a:hover {
+    color: var(--accent);
+    background: rgba(30,144,255,0.08);
+  }
+  padding: 0.9rem 0;
 }
 
 .logo {
@@ -59,6 +111,16 @@ body {
   text-decoration: none;
   letter-spacing: -0.5px;
 }
+  .hero {
+    padding: 60px 0 80px 0;
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    /* very subtle colored overlay on light background */
+    background: linear-gradient(180deg, transparent 0%, rgba(250,250,252,0.6) 100%);
+    position: relative;
+    overflow: hidden;
+  }
 
 .site-nav {
   display: flex;
@@ -70,14 +132,39 @@ body {
   color: var(--text-muted);
   text-decoration: none;
   font-size: 0.95rem;
-  transition: color 0.3s ease;
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -45%;
+    right: -10%;
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle, rgba(30, 144, 255, 0.06) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(40px);
+  }
+  transition: color 0.25s ease, background 0.25s ease;
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
 }
 
 .site-nav a:hover {
   color: var(--accent-light);
+  background: rgba(0,168,255,0.06);
 }
 
 .nav-toggle {
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -25%;
+    left: -8%;
+    width: 360px;
+    height: 360px;
+    background: radial-gradient(circle, rgba(0, 168, 255, 0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(30px);
+  }
   display: none;
   background: none;
   border: 0;
@@ -85,17 +172,38 @@ body {
   font-size: 1.5rem;
   cursor: pointer;
 }
+  .hero-inner h1 {
+    /* Fluid heading: grows on large screens, clamps on small screens */
+    font-size: clamp(1.6rem, 3.2vw + 1.2rem, 3.5rem);
+    margin: 0 0 0.5rem 0;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--text);
+  }
 
 /* Hero Section */
 .hero {
-  padding: 80px 0;
-  min-height: 100vh;
+  padding: 60px 0 80px 0;
+  /* allow hero to take a lot of vertical space on large screens but not force on smaller viewports */
+  min-height: 75vh;
   display: flex;
+  .lead {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin: 0 0 2rem 0;
+    line-height: 1.8;
+    max-width: 500px;
+  }
   align-items: center;
   background: linear-gradient(135deg, rgba(30, 144, 255, 0.05) 0%, rgba(0, 168, 255, 0.03) 100%);
   position: relative;
   overflow: hidden;
 }
+  .btn-primary {
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+    color: white;
+    box-shadow: 0 8px 20px rgba(30, 144, 255, 0.12);
+  }
 
 .hero::before {
   content: '';
@@ -108,6 +216,19 @@ body {
   border-radius: 50%;
   filter: blur(60px);
 }
+  .social-link {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    text-decoration: none;
+    background: var(--bg-secondary);
+    transition: all 0.2s ease;
+  }
 
 .hero::after {
   content: '';
@@ -123,22 +244,58 @@ body {
 
 .hero-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr; /* revert to two-column layout: text left, image right */
   gap: 4rem;
+  .image-placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    max-height: 620px;
+    background: linear-gradient(135deg, rgba(30, 144, 255, 0.06) 0%, rgba(0, 168, 255, 0.03) 100%);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    color: var(--accent);
+    font-weight: 700;
+  }
   align-items: center;
   position: relative;
   z-index: 1;
 }
 
+.hero-inner { max-width: 640px; text-align: left; }
+
 .hero-inner {
+  .service-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    border-radius: var(--radius);
+    text-align: center;
+    transition: all 0.18s ease;
+    box-shadow: 0 8px 18px rgba(11,17,32,0.04);
+  }
   z-index: 2;
 }
 
 .hero-inner h1 {
-  font-size: 3.5rem;
+  /* Fluid heading: grows on large screens, clamps on small screens */
+  font-size: clamp(1.6rem, 3.2vw + 1.2rem, 3.5rem);
   margin: 0 0 0.5rem 0;
+  .project-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: all 0.2s ease;
+    box-shadow: 0 8px 22px rgba(11,17,32,0.04);
+  }
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 .highlight {
@@ -147,6 +304,16 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+  .project-thumb {
+    height: 200px;
+    background: linear-gradient(135deg, rgba(30, 144, 255, 0.08) 0%, rgba(0, 168, 255, 0.04) 100%);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--accent);
+  }
 
 .subtitle {
   font-size: 1.3rem;
@@ -158,12 +325,29 @@ body {
 .lead {
   font-size: 1rem;
   color: var(--text-muted);
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg-secondary);
+    color: var(--text);
+    font-family: inherit;
+    transition: all 0.18s ease;
+  }
   margin: 0 0 2rem 0;
   line-height: 1.8;
   max-width: 500px;
 }
 
 .hero-buttons {
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent-light);
+    background: linear-gradient(90deg, rgba(30,144,255,0.02), rgba(0,168,255,0.01));
+  }
   display: flex;
   gap: 1rem;
   margin: 2rem 0;
@@ -210,6 +394,8 @@ body {
   margin-top: 2.5rem;
 }
 
+.hero .social-icons { justify-content: center; }
+
 .social-link {
   width: 50px;
   height: 50px;
@@ -239,7 +425,9 @@ body {
 
 .image-placeholder {
   width: 100%;
-  height: 500px;
+  /* keep a consistent aspect ratio and scale responsively */
+  aspect-ratio: 4 / 5;
+  max-height: 620px;
   background: linear-gradient(135deg, rgba(30, 144, 255, 0.15) 0%, rgba(0, 168, 255, 0.1) 100%);
   border-radius: var(--radius);
   border: 2px solid var(--border);
@@ -248,10 +436,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 4rem;
+  font-size: clamp(2.5rem, 6vw, 4rem);
   color: var(--accent);
   font-weight: 700;
 }
+
+.hero-image { display:flex; justify-content:center; }
+.hero-image .image-placeholder { max-width: 460px; width: 100%; }
 
 .image-placeholder::before {
   content: '';
@@ -284,6 +475,7 @@ body {
 .contact h2 {
   font-size: 2.5rem;
   margin: 0 0 2rem 0;
+  text-align: center; /* center section headings */
 }
 
 .about p {
@@ -468,14 +660,10 @@ body {
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .hero-container {
     grid-template-columns: 1fr;
     gap: 2rem;
-  }
-
-  .hero-inner h1 {
-    font-size: 2.5rem;
   }
 
   .services-grid,
@@ -484,7 +672,7 @@ body {
   }
 
   .image-placeholder {
-    height: 400px;
+    max-height: 480px;
   }
 }
 
@@ -513,12 +701,8 @@ body {
   }
 
   .hero {
-    padding: 60px 0;
+    padding: 36px 0 56px 0;
     min-height: auto;
-  }
-
-  .hero-inner h1 {
-    font-size: 2rem;
   }
 
   .subtitle {
@@ -549,7 +733,8 @@ body {
   }
 
   .image-placeholder {
-    height: 300px;
+    height: auto;
+    aspect-ratio: 3 / 4;
   }
 }
 
@@ -580,4 +765,81 @@ body {
   .hero::after {
     display: none;
   }
+}
+
+/* --- Force single solid background and remove large decorative gradients --- */
+/* This override prevents the background from showing banded gradients and keeps the page a single color. */
+body {
+  background: var(--bg) !important;
+  background-image: none !important;
+}
+
+/* Remove large decorative radial overlays that create bands */
+.hero::before,
+.hero::after {
+  display: none !important;
+}
+
+/* Remove hero section gradient so card sits on single-color background */
+.hero {
+  background: transparent !important;
+}
+
+/* Ensure page sections don't introduce background gradients */
+section, .container {
+  background-image: none !important;
+  background: transparent !important;
+}
+
+/* Keep hero-card surface visible on the single-color background */
+.hero-card {
+  background: var(--bg-secondary) !important;
+}
+
+/* --- Clean overrides: typography and hero-card polish --- */
+/* Use Poppins for a modern, clean look */
+body {
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+/* Hero card: centered rounded surface with subtle shadow */
+.hero-card {
+  background: var(--bg-secondary);
+  border-radius: 18px;
+  padding: 2.2rem 2.2rem;
+  box-shadow: 0 12px 40px rgba(11,17,32,0.06);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: visible;
+}
+
+/* Slightly narrower two-column layout so text has room */
+.hero-card .hero-container {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.hero-inner h1 { margin-bottom: 0.3rem; }
+.subtitle { margin-bottom: 1rem; }
+
+/* Make CTA buttons friendlier on light background */
+.btn-primary { padding: 0.75rem 1.6rem; border-radius: 10px; }
+.btn-secondary { border: 1.5px solid rgba(30,144,255,0.22); padding: 0.66rem 1.4rem; border-radius: 10px; }
+
+/* image placeholder cap */
+.hero-image .image-placeholder { max-width: 420px; width: 100%; height: auto; font-size: 2.4rem; opacity: 0.95; }
+
+/* Improve section spacing */
+.about, .services, .projects { padding-top: 3.2rem; padding-bottom: 3.2rem; }
+
+/* Ensure headings are readable with slightly heavier weight */
+.about h2, .services h2, .projects h2 { font-weight: 700; }
+
+/* Slight responsive change: stack hero card content on small screens */
+@media (max-width: 900px) {
+  .hero-card .hero-container { grid-template-columns: 1fr; }
+  .hero-card { padding: 1.6rem; }
+  .hero-image .image-placeholder { max-width: 100%; aspect-ratio: 3/4; }
 }
