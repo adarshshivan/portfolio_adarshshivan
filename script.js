@@ -37,4 +37,27 @@ document.addEventListener('DOMContentLoaded',function(){
       }
     });
   }
+
+  // Typewriter effect for the name (only the name)
+  (function(){
+    const el = document.getElementById('type-name');
+    if(!el) return;
+    const full = el.textContent.trim();
+    // guard: if empty or already typed, do nothing
+    if(!full || el.dataset.typed === 'true') return;
+    el.textContent = '';
+    el.classList.add('typing');
+    let i = 0;
+    const speed = 110; // ms per char
+    const timer = setInterval(()=>{
+      el.textContent += full.charAt(i);
+      i += 1;
+      if(i >= full.length){
+        clearInterval(timer);
+        el.dataset.typed = 'true';
+        // keep caret blinking after typing; remove .typing after short pause to stop any "typing" state styles
+        setTimeout(()=> el.classList.remove('typing'), 900);
+      }
+    }, speed);
+  })();
 });
