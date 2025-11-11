@@ -445,6 +445,16 @@ body {
   transform: translateY(-2px);
 }
 
+/* Small icon inside buttons */
+.btn .icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+.btn svg { display: inline-block; vertical-align: middle; }
+
 .social-icons {
   display: flex;
   gap: 1rem;
@@ -925,6 +935,87 @@ body {
 /* Active nav link (if you add active class later) */
 .site-nav a.active { color: var(--accent) !important; font-weight: 700; }
 
+/* Rounded navbar edges (desktop header + mobile panel) */
+.site-header {
+  border-radius: calc(var(--radius) - 4px) !important;
+  overflow: visible; /* allow dropdowns/children to show while keeping rounded corners */
+}
+
+.site-header .header-inner {
+  border-radius: inherit;
+}
+
+/* Mobile nav panel rounding */
+.site-nav {
+  border-radius: calc(var(--radius) - 6px) !important;
+}
+.site-nav.show {
+  overflow: hidden; /* clip mobile panel content to rounded panel */
+}
+
+/* When header is in compact mode (not enough room), hide the full nav and show the burger */
+.site-header.compact .site-nav {
+  display: none !important;
+}
+.site-header.compact .nav-toggle {
+  display: inline-flex !important;
+}
+.site-header.compact .site-nav.show {
+  /* when burger opened, show nav as a panel */
+  display: flex !important;
+  flex-direction: column;
+}
+
+
+/* Increase padding and hit area for the site name and burger (nav-toggle) */
+.header-inner .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.9rem; /* vertical / horizontal */
+  border-radius: calc(var(--radius) - 6px);
+}
+
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.9rem; /* increases hit area */
+  margin-left: 0.5rem;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+.nav-toggle:hover,
+.nav-toggle:focus {
+  background: rgba(0,0,0,0.04);
+  border-color: var(--border);
+  color: var(--accent);
+  outline: none;
+}
+
+/* Burger bars */
+.nav-toggle { position: relative; width: 44px; height: 34px; padding: 6px; }
+.nav-toggle .bar { display: block; position: absolute; left: 8px; right: 8px; height: 2px; background: currentColor; border-radius: 2px; transition: transform 280ms cubic-bezier(.2,.9,.3,1), opacity 200ms ease, top 280ms cubic-bezier(.2,.9,.3,1); }
+.nav-toggle .bar-1 { top: 10px; }
+.nav-toggle .bar-2 { top: 16px; }
+.nav-toggle .bar-3 { top: 22px; }
+
+/* Open state: transform bars into an 'X' */
+.nav-toggle.open .bar-1 { transform: translateY(6px) rotate(45deg); top: 10px; }
+.nav-toggle.open .bar-2 { opacity: 0; transform: scaleX(0); }
+.nav-toggle.open .bar-3 { transform: translateY(-6px) rotate(-45deg); top: 22px; }
+
+/* Slight color change when open for visibility */
+.nav-toggle.open { color: var(--accent); }
+
+/* On small screens ensure the toggle remains easy to tap */
+@media (max-width: 768px) {
+  .nav-toggle { padding: 0.6rem 1rem; }
+  .header-inner .logo { padding: 0.45rem 0.7rem; }
+}
+
 /* Make skills chips animate like the service cards on hover/focus */
 .skills li {
   transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
@@ -937,6 +1028,44 @@ body {
   box-shadow: 0 12px 28px rgba(6,56,46,0.06);
   background: rgba(0,194,168,0.06);
   cursor: pointer;
+}
+
+/* Reverted: classic small skill chips (old size and feel) */
+.skills {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0 0;
+}
+
+.skills li {
+  /* match Download CV button (btn-secondary): transparent surface, mint border and text */
+  background: transparent;
+  border: 1.5px solid var(--accent-light);
+  color: var(--accent-light);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+/* Hover/focus keeps the lift but respects original chip sizing */
+.skills li:hover,
+.skills li:focus,
+.skills li:focus-visible {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 28px rgba(6,56,46,0.06);
+  background: rgba(0,194,168,0.04);
+  color: var(--text);
+  cursor: pointer;
+}
+
+@media (max-width: 520px) {
+  .skills { gap: 0.6rem; }
+  .skills li { padding: 0.45rem 0.9rem; }
 }
 
 /* Typewriter caret and small polish for the name */
@@ -964,6 +1093,110 @@ body {
   50% { opacity: 0; }
   100% { opacity: 1; }
 }
+
+/* Page frame: add a small outer gutter and subtle border so content doesn't hug the viewport */
+:root {
+  --page-gutter: clamp(12px, 2vw, 28px);
+}
+
+html {
+  background: transparent; /* keep framing visible against viewport */
+}
+
+/* Smooth scrolling and offset so anchored sections aren't hidden under the fixed header */
+html { scroll-behavior: smooth; }
+section {
+  scroll-margin-top: calc(var(--header-height, 64px) + 12px);
+}
+
+body {
+  /* keep previously set styles but add an outer padding and subtle frame */
+  padding: var(--page-gutter);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: 0 10px 30px rgba(2,6,23,0.04);
+  background-clip: padding-box;
+}
+
+/* Keep the header fixed inside the framed page so it remains visible while scrolling */
+:root {
+  --header-height: 64px; /* used to offset the main content */
+}
+
+.site-header {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  padding: 0; /* header-inner provides internal padding */
+}
+
+.site-header .header-inner {
+  height: 100%;
+  width: 100%;
+  padding: 0 1rem;
+  align-items: center;
+}
+
+/* Push page content below the fixed header so it's not covered */
+main {
+  padding-top: calc(var(--header-height) + var(--page-gutter) + 8px);
+}
+
+@media (max-width: 768px) {
+  :root { --header-height: 56px; }
+  main { padding-top: calc(var(--header-height) + var(--page-gutter) + 8px); }
+  .site-header { left: 0; right: 0; }
+}
+
+/* Glass navbar: translucent backdrop with blur */
+.site-header {
+  background: rgba(255,255,255,0.52) !important; /* translucent white */
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  backdrop-filter: blur(10px) saturate(140%);
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  box-shadow: 0 8px 24px rgba(2,6,23,0.06) !important;
+}
+
+.site-header .logo,
+.site-nav a,
+.nav-toggle {
+  color: var(--text) !important;
+}
+
+.site-nav {
+  background: rgba(255,255,255,0.44) !important;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+}
+
+@media (max-width: 768px) {
+  .site-nav {
+    background: rgba(255,255,255,0.62) !important;
+  }
+}
+
+/* Remove nav link focus/highlight completely (no persistent highlight after close) */
+.site-nav a:focus,
+.site-nav a:focus-visible,
+.site-nav a:active {
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  color: inherit !important;
+}
+
+/* Prevent mobile tap highlight on some browsers */
+.site-nav a,
+.nav-toggle {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+
 
 
 
