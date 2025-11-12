@@ -678,6 +678,22 @@ body {
   padding: 4rem 0;
 }
 
+/* Contact grid and cards */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+.contact-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  padding: 1.15rem;
+  border-radius: calc(var(--radius) - 2px);
+  text-align: center;
+}
+.contact-card h3 { margin-top: 0; }
+
 .contact-form {
   display: grid;
   gap: 1.2rem;
