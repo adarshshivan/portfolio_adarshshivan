@@ -897,6 +897,17 @@ body {
   overflow: visible;
 }
 
+/* About-specific card: reuse hero-card styles but force single-column content */
+.about-card {
+  /* slightly tighter padding for about card */
+  padding: 1.6rem 1.6rem;
+}
+.about-card .hero-container {
+  display: grid;
+  grid-template-columns: 1fr; /* single column for the about card */
+  gap: 1rem;
+}
+
 /* Slightly narrower two-column layout so text has room */
 .hero-card .hero-container {
   display: grid;
