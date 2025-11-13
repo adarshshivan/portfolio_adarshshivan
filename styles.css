@@ -551,6 +551,26 @@ body {
   max-width: 600px;
 }
 
+/* About text: slightly larger and centered for balanced presentation */
+.about .hero-inner p {
+  color: var(--text-muted);
+  font-size: 1.05rem; /* slightly larger but not too big */
+  line-height: 1.85;
+  text-align: center;
+  /* centered text doesn't use inter-word justification; keep hyphens off for a cleaner look */
+  text-justify: auto;
+  hyphens: none;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 640px) {
+  .about .hero-inner p {
+    text-align: center;
+    hyphens: none;
+    font-size: 1rem;
+  }
+}
+
 .skills {
   display: flex;
   gap: 0.8rem;
