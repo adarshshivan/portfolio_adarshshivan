@@ -551,37 +551,48 @@ body {
   max-width: 600px;
 }
 
-/* About text: slightly larger and centered for balanced presentation */
+/* About: revert to a simple card and left-aligned text per user request */
 .about-card {
-  /* about card: slightly larger, centered, and more generous padding for readability */
-  padding: 2.2rem 2.4rem;
-  max-width: 920px;
-  margin: 0 auto 1.6rem;
-  border-radius: 20px;
-  box-shadow: 0 22px 48px rgba(6,56,46,0.06);
-  border: 1px solid var(--border);
+  /* keep modest padding but remove heavy visual treatments */
+  padding: 1.2rem 1.4rem;
+  max-width: 880px;
+  margin: 0 auto 1.2rem;
+  border-radius: 12px;
+  box-shadow: none; /* remove large drop shadow */
+  border: none; /* remove extra border */
+  background: var(--bg-secondary);
 }
 .about-card .hero-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
+  display: block; /* simple flow inside the card */
+  gap: 0;
 }
 
-/* Constrain the text column so centered paragraphs have an optimal line-length */
+/* Center the paragraph block in the card but keep paragraph text left-aligned */
 .about .hero-inner {
-  max-width: 62ch; /* ideal readable line length */
-  margin: 0 auto;
-  text-align: center;
+  max-width: 720px; /* constrain the block width */
+  margin: 0 auto; /* center the block inside the about card */
+  padding: 0 1rem;
+  text-align: left; /* paragraphs still read left-to-right */
+  text-align-last: left;
+  -webkit-text-align-last: left;
+  hyphens: none;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
-
+.about .hero-inner p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  text-align: left;
+}
 
 @media (max-width: 640px) {
-  .about .hero-inner {
-    max-width: calc(100% - 3rem);
-    padding: 0 0.5rem;
-  }
-
+  .about-card { padding: 1rem; }
+  .about .hero-inner p { font-size: 0.95rem; line-height: 1.5; }
 }
 
 .skills {
@@ -1225,6 +1236,22 @@ main {
   backdrop-filter: blur(10px) saturate(140%);
   border: 1px solid rgba(255,255,255,0.12) !important;
   box-shadow: 0 8px 24px rgba(2,6,23,0.06) !important;
+}
+
+/* --- Remove page framing card (user requested) --- */
+/* Override the framed page look so there's no large rounded card behind sections */
+:root {
+  --page-gutter: 0px; /* remove outer padding */
+}
+body {
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+/* adjust main top padding to remain offset from fixed header when frame removed */
+main {
+  padding-top: calc(var(--header-height) + 8px) !important;
 }
 
 .site-header .logo,
