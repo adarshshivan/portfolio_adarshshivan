@@ -152,4 +152,79 @@ document.addEventListener('DOMContentLoaded',function(){
       }
     }, speed);
   })();
+
+  // Projects: show only a single row initially, add toggle to reveal more
+  (function(){
+    const projectsSection = document.getElementById('projects');
+    if(!projectsSection) return;
+    const grid = projectsSection.querySelector('.projects-grid');
+    if(!grid) return;
+
+    const cards = Array.from(grid.querySelectorAll('.project-card'));
+    if(cards.length <= 3) return; // nothing to collapse
+
+    // helper: compute current columns in the grid (fall back to 3)
+    function columnsCount(){
+      try{
+        const cols = getComputedStyle(grid).gridTemplateColumns;
+        if(!cols) return 3;
+        return cols.split(' ').length || 3;
+      }catch(e){ return 3; }
+    }
+
+    // create toggle button container and button
+    const toggleWrap = document.createElement('div');
+    toggleWrap.className = 'projects-toggle';
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.id = 'projects-toggle';
+    btn.className = 'btn btn-secondary';
+    btn.textContent = 'Show me'; // initial label per request
+    btn.setAttribute('aria-expanded','false');
+    toggleWrap.appendChild(btn);
+    grid.insertAdjacentElement('afterend', toggleWrap);
+
+    let expanded = false;
+
+    function applyCollapse(){
+      const cols = columnsCount();
+      // show only first 'cols' cards
+      cards.forEach((c,i)=>{
+        if(i < cols) c.classList.remove('hidden'); else c.classList.add('hidden');
+      });
+      btn.textContent = 'Show me';
+      btn.setAttribute('aria-expanded','false');
+      expanded = false;
+    }
+
+    function expandAll(){
+      cards.forEach(c=> c.classList.remove('hidden'));
+      btn.textContent = 'Show less';
+      btn.setAttribute('aria-expanded','true');
+      expanded = true;
+    }
+
+    // initialize collapsed view
+    applyCollapse();
+
+    // toggle handler
+    btn.addEventListener('click', ()=>{
+      if(expanded) {
+        applyCollapse();
+        // scroll into view the projects section so collapse is visible
+        projectsSection.scrollIntoView({behavior:'smooth', block:'start'});
+      } else {
+        expandAll();
+      }
+    });
+
+    // Reapply collapse on resize if currently collapsed (columns may change)
+    let resizeTimer2 = null;
+    window.addEventListener('resize', ()=>{
+      clearTimeout(resizeTimer2);
+      resizeTimer2 = setTimeout(()=>{
+        if(!expanded) applyCollapse();
+      }, 120);
+    });
+  })();
 });
