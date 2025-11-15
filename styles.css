@@ -544,6 +544,35 @@ body {
   font-size: 2.5rem;
   margin: 0 0 2rem 0;
   text-align: center; /* center section headings */
+  position: relative;
+  padding-bottom: 0.9rem; /* space for underline */
+}
+
+/* Decorative underline for section headings */
+.about h2::after,
+.services h2::after,
+.projects h2::after,
+.contact h2::after,
+.skills-section h2::after {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 6px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+  border-radius: 6px;
+  margin: 8px auto 0;
+  box-shadow: 0 6px 18px rgba(6,56,46,0.06);
+}
+
+@media (max-width: 520px) {
+  .about h2::after,
+  .services h2::after,
+  .projects h2::after,
+  .contact h2::after,
+  .skills-section h2::after {
+    width: 48px;
+    height: 4px;
+  }
 }
 
 .about p {
