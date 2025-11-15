@@ -1106,6 +1106,28 @@ body {
   cursor: pointer;
 }
 
+/* Education: stack cards vertically (one below another) */
+.services {
+  /* keep section wrapper rules as-is */
+}
+.services .services-grid {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.25rem !important;
+  margin-top: 1.25rem !important;
+}
+.services .service-card {
+  width: 100% !important;
+  /* match visual size/feel of the About card */
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 1.2rem 1.4rem;
+  border-radius: 12px;
+  background: var(--bg-secondary);
+  border: none;
+  box-shadow: none;
+}
+
 /* Reverted: classic small skill chips (old size and feel) */
 .skills {
   display: flex;
