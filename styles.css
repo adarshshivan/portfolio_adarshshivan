@@ -695,6 +695,18 @@ body {
   margin-top: 2rem;
 }
 
+/* Hidden project cards (used by JS to collapse extra items) */
+.project-card.hidden {
+  display: none !important;
+}
+
+/* Toggle button container under projects */
+.projects .projects-toggle {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
 .project-card {
   background: rgba(15, 21, 53, 0.8);
   border: 1px solid var(--border);
