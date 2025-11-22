@@ -1,176 +1,336 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Adarsh Shivan</title>
-  <link rel="stylesheet" href="styles.css">
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adarsh Shivan | Cloud & DevOps Engineer</title>
+    <meta name="description" content="Portfolio of Adarsh Shivan, a Cloud Computing Enthusiast specializing in AWS, Azure, and GCP.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="logo" href="#">Adarsh Shivan</a>
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span class="bar bar-1"></span>
-        <span class="bar bar-2"></span>
-        <span class="bar bar-3"></span>
-      </button>
-  <nav class="site-nav">
-    <a href="#home">Home</a>
-  <a href="#about">About</a>
-  <a href="#education">Education</a>
-  <a href="#projects">Projects</a>
-  <a href="#contact">Contact</a>
-  </nav>
-    </div>
-  </header>
+    <!-- Background Canvas for Particles -->
+    <canvas id="bg-canvas"></canvas>
 
-  <main>
-    <section id="home" class="hero">
-      <div class="container">
-        <div class="hero-card">
-          <div class="hero-container">
-            <div class="hero-inner">
-              <h1>HI, I am<br><span id="type-name" class="highlight typewriter">Adarsh Shivan</span></h1>
-              <p class="subtitle">Cloud Computing Enthusiast</p>
-              <p class="lead">Passionate about leveraging cloud technologies to build scalable, efficient, and innovative solutions. 
-                Specialized in AWS, Azure, and Google Cloud Platform with expertise in DevOps practices.</p>
-              <div class="hero-buttons">
-                <a class="btn btn-primary" href="#projects">My works</a>
-                <!-- Replace assets/Adarsh_Resume.pdf with your real CV file -->
-                <a class="btn btn-secondary" href="assets/Adarsh_Resume.pdf" download="Adarsh_Resume.pdf">
-                  <!-- inline download icon -->
-                  <svg class="icon icon-download" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                    <path d="M12 3v10m0 0l-4-4m4 4l4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
-                    <path d="M5 21h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
-                  </svg>
-                  Download CV
-                </a>
-              </div>
-              <div class="social-icons">
-                <a href="#" class="social-link" aria-label="Facebook">f</a>
-                <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
-                <a href="#" class="social-link" aria-label="LinkedIn">in</a>
-              </div>
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">Adarsh<span class="dot">.</span></a>
+            
+            <button class="mobile-toggle" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <nav class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#expertise" class="nav-link">Expertise</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link btn-contact">Contact Me</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <span class="badge">Cloud Computing Enthusiast</span>
+                    <h1 class="glitch-text" data-text="Building the Future">Building the <br> <span class="gradient-text">Cloud Infrastructure</span> <br> of Tomorrow</h1>
+                    <p class="hero-description">
+                        Passionate about leveraging cloud technologies to build scalable, efficient, and innovative solutions. 
+                        Specialized in <strong>AWS</strong>, <strong>Azure</strong>, and <strong>Google Cloud Platform</strong> with expertise in DevOps practices.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary">View My Work</a>
+                        <a href="assets/Adarsh_Resume.pdf" class="btn btn-outline" download>
+                            Download CV
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        </a>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn" class="social-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="#" aria-label="Twitter" class="social-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+                        </a>
+                        <a href="mailto:youremail@example.com" aria-label="Email" class="social-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="glass-card profile-card">
+                        <div class="profile-image-wrapper">
+                            <!-- Placeholder for profile image, using a gradient for now -->
+                            <div class="profile-placeholder">AS</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Adarsh Shivan</h3>
+                            <p>Cloud Architect</p>
+                            <div class="status-indicator">
+                                <span class="status-dot"></span>
+                                Available for work
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Floating Elements for decoration -->
+                    <div class="floating-icon icon-aws">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="AWS">
+                    </div>
+                    <div class="floating-icon icon-docker">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker">
+                    </div>
+                    <div class="floating-icon icon-k8s">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes">
+                    </div>
+                </div>
             </div>
-            <div class="hero-image">
-              <div class="image-placeholder">Ad</div>
+            
+            <div class="scroll-indicator">
+                <span>Scroll Down</span>
+                <div class="mouse"></div>
             </div>
-          </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section about-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="section-subtitle">Architecting the digital future</p>
+                </div>
+                
+                <div class="about-grid">
+                    <div class="about-text glass-panel">
+                        <p>I’m a passionate <strong>Cloud Computing Professional</strong> focused on helping businesses innovate and grow through smart, scalable cloud solutions. I have hands-on experience across major platforms including <strong>AWS</strong>, <strong>Microsoft Azure</strong>, and <strong>Google Cloud Platform (GCP)</strong>.</p>
+                        
+                        <p>I enjoy designing and deploying secure, cost-efficient, and high-performing cloud infrastructures that make a real impact. My work involves using <strong>Docker</strong> and <strong>Kubernetes</strong> for containerization, <strong>Terraform</strong> and <strong>CloudFormation</strong> for infrastructure automation, and <strong>CI/CD pipelines</strong> to streamline development and deployment workflows.</p>
+                        
+                        <p>I’m always eager to learn, build, and explore new technologies that push the boundaries of what’s possible in the cloud.</p>
+                    </div>
+                    
+                    <div class="skills-container glass-panel">
+                        <h3>Tech Stack</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="AWS"></div>
+                                <span>AWS</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Azure"></div>
+                                <span>Azure</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="GCP"></div>
+                                <span>GCP</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"></div>
+                                <span>Docker</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="K8s"></div>
+                                <span>Kubernetes</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" alt="Terraform"></div>
+                                <span>Terraform</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" alt="Jenkins"></div>
+                                <span>Jenkins</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"></div>
+                                <span>Python</span>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux"></div>
+                                <span>Linux</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expertise/Services Section -->
+        <section id="expertise" class="section expertise-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">My Expertise</h2>
+                    <p class="section-subtitle">What I bring to the table</p>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card glass-card">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19c0-1.7-1.3-3-3-3h-5c-1.7 0-3 1.3-3 3"></path><path d="M16 13H8"></path><path d="M16 9H8"></path><path d="M6.5 19a6.5 6.5 0 0 1 11 0"></path></svg>
+                        </div>
+                        <h3>Cloud Architecture</h3>
+                        <p>Designing robust, scalable, and secure cloud environments tailored to business needs using AWS, Azure, and GCP.</p>
+                    </div>
+                    <div class="service-card glass-card">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        </div>
+                        <h3>DevOps & Automation</h3>
+                        <p>Streamlining workflows with CI/CD pipelines, Infrastructure as Code (Terraform/CloudFormation), and automated testing.</p>
+                    </div>
+                    <div class="service-card glass-card">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        </div>
+                        <h3>Containerization</h3>
+                        <p>Deploying and managing microservices using Docker and Kubernetes for maximum efficiency and portability.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-subtitle">Recent work and experiments</p>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <article class="project-card glass-card">
+                        <div class="project-image">
+                            <div class="placeholder-img">Project 1</div>
+                            <div class="project-overlay">
+                                <a href="#" class="btn-icon" aria-label="View Project">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Cloud Infrastructure Setup</h3>
+                            <p>Automated provisioning of a multi-tier architecture on AWS using Terraform.</p>
+                            <div class="project-tags">
+                                <span>AWS</span>
+                                <span>Terraform</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2 -->
+                    <article class="project-card glass-card">
+                        <div class="project-image">
+                            <div class="placeholder-img">Project 2</div>
+                            <div class="project-overlay">
+                                <a href="#" class="btn-icon" aria-label="View Project">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>CI/CD Pipeline</h3>
+                            <p>End-to-end deployment pipeline using Jenkins and Docker for a microservices app.</p>
+                            <div class="project-tags">
+                                <span>Jenkins</span>
+                                <span>Docker</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 3 -->
+                    <article class="project-card glass-card">
+                        <div class="project-image">
+                            <div class="placeholder-img">Project 3</div>
+                            <div class="project-overlay">
+                                <a href="#" class="btn-icon" aria-label="View Project">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Kubernetes Cluster</h3>
+                            <p>Managed K8s cluster deployment on Google Cloud Platform with auto-scaling.</p>
+                            <div class="project-tags">
+                                <span>GCP</span>
+                                <span>K8s</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <div class="contact-wrapper glass-panel">
+                    <div class="contact-info">
+                        <h2>Let's Work Together</h2>
+                        <p>Have a project in mind or want to discuss cloud solutions? Reach out — I’ll usually reply within a few business days.</p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="icon-box">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                </div>
+                                <a href="mailto:youremail@example.com">youremail@example.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <div class="icon-box">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                </div>
+                                <span>Remote / Worldwide</span>
+                            </div>
+                        </div>
+
+                        <div class="social-connect">
+                            <h3>Connect</h3>
+                            <div class="social-links">
+                                <a href="#" class="social-btn">LinkedIn</a>
+                                <a href="#" class="social-btn">Twitter/X</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-wrapper">
+                        <form class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" placeholder="your@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" rows="4" placeholder="Tell me about your project..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© <span id="year"></span> Adarsh Shivan. Built with <span class="heart">❤️</span> and Cloud Tech.</p>
         </div>
-      </div>
-    </section>
+    </footer>
 
-    <section id="about" class="container about">
-      <h2>About me</h2>
-      <div class="hero-card about-card">
-        <div class="hero-container">
-          <div class="hero-inner">
-            <p>I’m a passionate Cloud Computing Professional focused on helping businesses innovate and grow through smart, scalable cloud solutions. I have hands-on experience across major platforms including AWS, Microsoft Azure, and Google Cloud Platform (GCP).</p>
-
-            <p>I enjoy designing and deploying secure, cost-efficient, and high-performing cloud infrastructures that make a real impact. My work involves using Docker and Kubernetes for containerization, Terraform and CloudFormation for infrastructure automation, and CI/CD pipelines to streamline development and deployment workflows.</p>
-
-            <p>I’m always eager to learn, build, and explore new technologies that push the boundaries of what’s possible in the cloud.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills" class="container skills-section">
-      <h2>Skills</h2>
-      <ul class="skills">
-        <li>AWS</li>
-        <li>Azure</li>
-        <li>Google Cloud</li>
-        <li>Docker</li>
-        <li>Kubernetes</li>
-        <li>Terraform</li>
-        <li>Jenkins</li>
-        <li>Python</li>
-        <li>Linux</li>
-        <li>DevOps</li>
-      </ul>
-    </section>
-
-    <section id="education" class="container services">
-      <h2>Education</h2>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">💻</div>
-          <h3>Web Design</h3>
-          <p>Creating beautiful and responsive web designs that captivate users.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">⚙️</div>
-          <h3>Web Development</h3>
-          <p>Building robust and scalable web applications with modern technologies.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">📱</div>
-          <h3>Mobile Friendly</h3>
-          <p>Ensuring your website works perfectly on all devices and screen sizes.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects" class="container projects">
-      <h2>Projects</h2>
-      <div class="projects-grid">
-        <article class="project-card">
-          <div class="project-thumb">IMG</div>
-          <h3>Project One</h3>
-          <p>Short description. Replace with your project details and links.</p>
-          <p><a class="link" href="#">View</a></p>
-        </article>
-
-        <article class="project-card">
-          <div class="project-thumb">IMG</div>
-          <h3>Project Two</h3>
-          <p>Short description.</p>
-          <p><a class="link" href="#">View</a></p>
-        </article>
-
-        <article class="project-card">
-          <div class="project-thumb">IMG</div>
-          <h3>Project Three</h3>
-          <p>Short description.</p>
-          <p><a class="link" href="#">View</a></p>
-        </article>
-      </div>
-    </section>
-    
-    <!-- Contact Section -->
-    <section id="contact" class="container contact">
-      <h2>Contact</h2>
-      <p class="lead">Want to work together or have a question? Reach out — I’ll usually reply within a few business days.</p>
-
-      <div class="contact-grid">
-        <div class="contact-card">
-          <h3>Email</h3>
-          <p><a class="link" href="mailto:youremail@example.com">youremail@example.com</a></p>
-        </div>
-
-        <div class="contact-card">
-          <h3>Social</h3>
-          <p><a class="link" href="#">LinkedIn</a> · <a class="link" href="#">X</a></p>
-        </div>
-
-        <div class="contact-card">
-          <h3>Location</h3>
-          <p>City, Country (remote-friendly)</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> Adarsh. Built with ❤️.</p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
